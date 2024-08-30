@@ -26,7 +26,7 @@ class AuthServices {
     };
   }
 
-  Future<void> logout() async{
+  Future<int> logout() async{
     final userData = await Storage.getProfData();
     String? token = userData['token'];
     final response = await http.post(
@@ -34,10 +34,10 @@ class AuthServices {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token'
-      }
+      } 
     ); 
-    final Map<String, dynamic> responseData = jsonDecode(response.body);
-    log('User data: $responseData');
+    // final Map<String, dynamic> responseData = jsonDecode(response.body);
+    return response.statusCode;
   }
 
   

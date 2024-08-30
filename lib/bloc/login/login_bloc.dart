@@ -19,6 +19,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>{
 
   void _checkLoginStatus(CheckLoginStatusEvent event, Emitter<LoginState> emit) async{
     try{
+      emit(state.copyWith(isSuccess: false, hasFailed: false, isSubmitting: false));
       if(event.role == 'Student'){
         // final userData = await Storage.getProfData();
         // final token = userData['token'];
@@ -30,11 +31,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>{
         // } else {
         //   emit(LoginFailure(error: "Token is not availbale"));
         // }
-        emit(state.copyWith(hasFailed: true));
+        emit(state.copyWith(hasFailed: true, isSubmitting: false));
         log('Student');
       }
       
-      if(event.role == 'Professor'){
+      else if(event.role == 'Professor'){
         emit(state.copyWith(isSubmitting: true));
         try{
           final userData = await Storage.getProfData();
