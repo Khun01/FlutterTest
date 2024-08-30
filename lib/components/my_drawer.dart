@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:app_for_testing/bloc/userdata/user_bloc.dart';
 import 'package:app_for_testing/bloc/userdata/user_event.dart';
 import 'package:app_for_testing/bloc/userdata/user_state.dart';
+import 'package:app_for_testing/components/my_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -178,7 +181,12 @@ class _MyDrawerState extends State<MyDrawer> {
                                 ),
                                 const SizedBox(width: 8),
                                 IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (context) =>
+                                              const MyDialog());
+                                    },
                                     icon: const Icon(Ionicons.log_out,
                                         color: Color(0xFF6BB577)))
                               ],
