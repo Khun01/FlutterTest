@@ -1,0 +1,14 @@
+{
+  "editor.fontFamily": "Fira Code Light, Space mono, Consolas, 'Courier New', monospace",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": true,
+  "editor.fontVariations": false,
+  "editor.codeLensFontFamily": "",
+  "editor.inlineSuggest.fontFamily": "default",
+  "editor.fontWeight": "normal",
+  "terminal.integrated.fontWeight": "normal",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 500,
+  "dart.flutterHotReloadOnSave": "all",
+  "dart.hotReloadOnSave": "all"
+}

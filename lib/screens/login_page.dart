@@ -28,12 +28,10 @@ class LoginPage extends StatelessWidget {
           child: BlocConsumer<LoginBloc, LoginState>(
             listener: (context, state) {
               if (state.isSuccess && !state.isSubmitting) {
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                         builder: (context) => Wrapper(role: role!)));
-              } else if (state.isSubmitting) {
-                log('Login loading');
               } else if (state.hasFailed) {
                 ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text(state.failureMessage!)));
@@ -69,7 +67,8 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 100, left: 24, right: 24),
+                    margin:
+                        const EdgeInsets.only(top: 50, left: 24, right: 24),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,

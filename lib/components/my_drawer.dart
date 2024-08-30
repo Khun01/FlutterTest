@@ -28,9 +28,9 @@ class _MyDrawerState extends State<MyDrawer> {
       create: (context) => UserDataBloc()..add(LoadUserData()),
       child: BlocBuilder<UserDataBloc, UserDataState>(
         builder: (context, state) {
-          if(state is UserDataLoading){
+          if (state is UserDataLoading) {
             return const Center(child: CircularProgressIndicator());
-          }else if(state is UserDataLoaded){
+          } else if (state is UserDataLoaded) {
             return SafeArea(
               child: Row(
                 children: [
@@ -94,7 +94,11 @@ class _MyDrawerState extends State<MyDrawer> {
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
                     width: showSecondContainer ? 150 : 0,
-                    color: const Color(0xFFFCFCFC),
+                    decoration: const BoxDecoration(
+                        color: Color(0xFFFCFCFC),
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(50),
+                            bottomRight: Radius.circular(50))),
                     child: Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 22.1),
                       child: SingleChildScrollView(
@@ -160,12 +164,17 @@ class _MyDrawerState extends State<MyDrawer> {
                             const SizedBox(height: 10),
                             Row(
                               children: [
-                                Text(
-                                  state.firstName ?? 'N/A',
-                                  style: GoogleFonts.nunito(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                      color: const Color(0xFF3B3B3B)),
+                                SizedBox(
+                                  width: 90,
+                                  child: Text(
+                                    state.firstName ?? 'N/A',
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                    style: GoogleFonts.nunito(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: const Color(0xFF3B3B3B)),
+                                  ),
                                 ),
                                 const SizedBox(width: 8),
                                 IconButton(
